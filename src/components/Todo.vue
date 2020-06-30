@@ -1,5 +1,5 @@
 <template>
-  <li :class="[{checked : todo.checked}, {editing : isEditing}]">
+  <li :class="[{completed : todo.checked}, {editing : isEditing}]">
     <div class="view">
       <input
         class="toggle"
