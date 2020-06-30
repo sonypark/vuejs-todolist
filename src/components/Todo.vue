@@ -10,7 +10,13 @@
       <label class="label" @dblclick="onEditMode">{{todo.content}}</label>
       <button class="destroy" @click="deleteTodo"></button>
     </div>
-    <input class="edit" :value="todo.content" @keyup.enter="updateTodo" @keyup.esc="offEditMode" />
+    <input
+      ref="edit"
+      class="edit"
+      :value="todo.content"
+      @keyup.enter="updateTodo"
+      @keyup.esc="offEditMode"
+    />
   </li>
 </template>
 
@@ -42,6 +48,7 @@ export default {
     },
     onEditMode() {
       this.isEditing = true;
+      this.$refs.edit.focus();
     },
     offEditMode() {
       this.isEditing = false;
