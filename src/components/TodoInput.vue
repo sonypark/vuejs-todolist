@@ -22,7 +22,8 @@ export default {
 
   methods: {
     addTodo(event) {
-      this.$store.commit("ADD_TODO", event.target.value);
+      this.$store.commit("todo/ADD_TODO", event.target.value);
+      this.todoText = "";
     }
   }
 };
