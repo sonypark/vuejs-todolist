@@ -24,6 +24,9 @@ export default {
         return todo;
       });
     },
+    DELETE_TODO(state, { id }) {
+      state.todos = state.todos.filter((todo) => todo.id !== id);
+    },
   },
 
   getters: {

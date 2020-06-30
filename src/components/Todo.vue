@@ -8,7 +8,7 @@
         @click="toggleCheckbox"
       />
       <label class="label">{{todo.content}}</label>
-      <button class="destroy"></button>
+      <button class="destroy" @click="deleteTodo"></button>
     </div>
     <input class="edit" value="todo.content" />
   </li>
@@ -27,6 +27,11 @@ export default {
       this.$store.commit("todo/TOGGLE_CHECKBOX", {
         id: this.todo.id,
         checked: event.target.checked
+      });
+    },
+    deleteTodo() {
+      this.$store.commit("todo/DELETE_TODO", {
+        id: this.todo.id
       });
     }
   }
