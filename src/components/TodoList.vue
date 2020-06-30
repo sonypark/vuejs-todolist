@@ -1,18 +1,23 @@
 <template>
   <ul id="todo-list" class="todo-list">
-    <li>
-      <div class="view">
-        <input class="toggle" type="checkbox" />
-        <label class="label">새로운 타이틀</label>
-        <button class="destroy"></button>
-      </div>
-      <input class="edit" value="새로운 타이틀" />
-    </li>
+    <Todo v-for="todo in todos" :key="todo.id" :todo="todo" />
   </ul>
 </template>
 
 <script>
-export default {};
+import Todo from "@/components/Todo";
+
+export default {
+  components: {
+    Todo
+  },
+
+  computed: {
+    todos() {
+      return this.$store.getters["todo/getAllTodos"];
+    }
+  }
+};
 </script>
 
 <style></style>

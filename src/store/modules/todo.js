@@ -1,8 +1,10 @@
 export default {
+  namespaced: true,
+
   state: {
     todos: [
-      { id: 1, text: 'buy a car', checked: false },
-      { id: 2, text: 'play a game', checked: false },
+      { id: 1, content: 'buy a car', checked: false },
+      { id: 2, content: 'play a game', checked: false },
     ],
   },
 
@@ -13,6 +15,12 @@ export default {
         content: value,
         checked: false,
       });
+    },
+  },
+
+  getters: {
+    getAllTodos: (state) => {
+      return state.todos;
     },
   },
 };
