@@ -16,6 +16,14 @@ export default {
         checked: false,
       });
     },
+    TOGGLE_CHECKBOX(state, { id, checked }) {
+      state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.checked = checked;
+        }
+        return todo;
+      });
+    },
   },
 
   getters: {
