@@ -41,5 +41,8 @@ export default {
     getAllTodos: (state) => {
       return state.todos;
     },
+    countTodos: (state) => {
+      return state.todos.length;
+    },
   },
 };
