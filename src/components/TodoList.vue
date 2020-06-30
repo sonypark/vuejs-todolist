@@ -14,7 +14,7 @@ export default {
 
   computed: {
     todos() {
-      return this.$store.getters["todo/getAllTodos"];
+      return this.$store.getters["todo/getFilterdTodos"];
     }
   }
 };
