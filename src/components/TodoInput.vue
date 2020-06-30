@@ -22,6 +22,11 @@ export default {
 
   methods: {
     addTodo(event) {
+      const content = event.target.value;
+      if (content.trim() === "") {
+        alert("빈 문자열은 추가할 수 없습니다.");
+        return;
+      }
       this.$store.commit("todo/ADD_TODO", event.target.value);
       this.todoText = "";
     }
