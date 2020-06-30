@@ -27,6 +27,14 @@ export default {
     DELETE_TODO(state, { id }) {
       state.todos = state.todos.filter((todo) => todo.id !== id);
     },
+    UPDATE_TODO(state, { id, content }) {
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.content = content;
+        }
+        return todo;
+      });
+    },
   },
 
   getters: {
