@@ -10,6 +10,7 @@ export default {
       { id: 1, content: 'buy a car', checked: false },
       { id: 2, content: 'play a game', checked: false },
     ],
+    selected: 'all',
   },
 
   mutations: {
@@ -44,22 +45,19 @@ export default {
       state.filterdTodos = state.todos;
     },
     FILTER_TODOS(state, { selected }) {
-      if (selected === 'active') {
-        state.filterdTodos = state.todos.filter((todo) => !todo.checked);
-      } else if (selected === 'completed') {
-        state.filterdTodos = state.todos.filter((todo) => todo.checked);
-      } else {
-        state.filterdTodos = state.todos;
-      }
+      state.selected = selected;
     },
   },
 
   getters: {
-    getAllTodos: (state) => {
-      return state.todos;
-    },
     getFilterdTodos: (state) => {
-      return state.filterdTodos;
+      if (state.selected === 'active') {
+        return state.todos.filter((todo) => !todo.checked);
+      } else if (state.selected === 'completed') {
+        return state.todos.filter((todo) => todo.checked);
+      } else {
+        return state.todos;
+      }
     },
     countTodos: (state) => {
       return state.filterdTodos.length;
