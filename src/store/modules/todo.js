@@ -6,10 +6,6 @@ export default {
       { id: 1, content: 'buy a car', checked: false },
       { id: 2, content: 'play a game', checked: false },
     ],
-    filterdTodos: [
-      { id: 1, content: 'buy a car', checked: false },
-      { id: 2, content: 'play a game', checked: false },
-    ],
     selected: 'all',
   },
 
@@ -20,7 +16,6 @@ export default {
         content: value,
         checked: false,
       });
-      state.filterdTodos = state.todos;
     },
     TOGGLE_CHECKBOX(state, { id, checked }) {
       state.todos.map((todo) => {
@@ -29,11 +24,9 @@ export default {
         }
         return todo;
       });
-      state.filterdTodos = state.todos;
     },
     DELETE_TODO(state, { id }) {
       state.todos = state.todos.filter((todo) => todo.id !== id);
-      state.filterdTodos = state.todos;
     },
     UPDATE_TODO(state, { id, content }) {
       state.todos = state.todos.map((todo) => {
@@ -42,7 +35,6 @@ export default {
         }
         return todo;
       });
-      state.filterdTodos = state.todos;
     },
     FILTER_TODOS(state, { selected }) {
       state.selected = selected;
@@ -60,7 +52,7 @@ export default {
       }
     },
     countTodos: (state) => {
-      return state.filterdTodos.length;
+      return this.getFilterdTodos(state).length;
     },
   },
 };
